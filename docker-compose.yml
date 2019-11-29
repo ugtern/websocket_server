@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+ websocket_server:
+   build: .
+   volumes:
+     - .:/websocket_server
+   ports:
+     - "8090:8090"
+   depends_on:
+     - websocket_server_db
+   logging:
+     driver: "json-file"
+     options:
+       max-size: "10k"
+       max-file: "1"
+ websocket_server_db:
+   image: mongo
+   restart: always
+   environment:
+     MONGO_INITDB_DATABASE: websocket_server_db
+   ports:
+     - 27017:27017

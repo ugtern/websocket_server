@@ -1,0 +1,6 @@
+umongo
+pymongo
+aiohttp
+requests
+motor
+python-jose
